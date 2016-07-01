@@ -43,57 +43,64 @@
 	    </div>
 	</nav>
 
-	<div class="container">
-	  <div class="row">
-	    	<h1 align="center">Sedes</h1>
-	  </div>
-		<div class="row">
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading text-medium text-center">
-						Nombre de Sede
-						<a href="#" class="thumbnail">
-				      <img src="/SistemaReservas/Imagenes/sede.jpg" alt="Sede">
-				    </a>
-					</div>
-					<div class="panel-body">
-							<label>Ubicacion:</label> distrito - provincia - departamento <br>
-							<label>Dirección:</label> direccion direccion direccion direccion <br>
-							<label>Número de Canchas:</label> 10 <br>
-							<div class="div_mitad">
-								<label>Referencia:</label>
-								referencia referencia referencia referencia referencia
-							</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-4">
-				<div class="panel panel-default">
-					<div class="panel-heading text-medium text-center">
-						Nombre de Sede
-						<a href="#" class="thumbnail">
-				      <img src="/SistemaReservas/Imagenes/sede.jpg" alt="Sede">
-				    </a>
-					</div>
-					<div class="panel-body">
-							<label>Ubicacion:</label> distrito - provincia - departamento <br>
-							<label>Dirección:</label> direccion direccion direccion direccion <br>
-							<label>Número de Canchas:</label> 10 <br>
-							<div class="div_mitad">
-								
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <h2 align="center">Reserva Nº: 1212</h2>
+    </div>
+    <div id="div_canchas" class="row">
+      <div class="col-xs-12">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Cancha Nº 1</h3>
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Hora Inicio</th>
+                  <th>Hora Fin</th>
+                  <th>Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>10:00am</td>
+                  <td>11:00am</td>
+                  <td>S/. 20.00</td>
+                </tr>
+                <tr>
+                  <td>01:00pm</td>
+                  <td>02:00pm</td>
+                  <td>S/. 25.00</td>
+                </tr>
+              </tbody>
+            </table>
+            <label>
+              Total: S/. <label id="total_codcancha" >45.00</label>
+            </label><br>
+            <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reserva éxitosa">
+              <span class="glyphicon glyphicon-usd"></span>
+            </button>
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cancelar Reserva">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-	<div class="container">
-		<div class="row panel panel-default">
-			<h3 align="center">Footer</h3>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row panel panel-default">
+      <h3 align="center">Footer</h3>
+    </div>
+  </div>
 	<script src="/SistemaReservas/bootstrap/js/jquery.min.js"></script>
   <script src="/SistemaReservas/bootstrap/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
 </body>
 </html>
