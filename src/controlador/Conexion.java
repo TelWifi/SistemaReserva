@@ -20,6 +20,10 @@ public class Conexion {
 		Class.forName(CLASSNAME);
 		con = DriverManager.getConnection(URL,USERNAME,PASSWORD);
 	}
+	public void desconectar()throws SQLException, ClassNotFoundException{
+		con.close();
+	}
+	
 	public ResultSet ejecutarConsulta(String sentencia) throws SQLException{
 		Statement st = this.getCon().createStatement(); 
 		return st.executeQuery(sentencia);
