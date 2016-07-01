@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.HelperVistas"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
-    <title>La 12</title>
-    <link href="/SistemaReservas/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/SistemaReservas/bootstrap/css/style.css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>La 12</title>
+	<%= HelperVistas.getLinkToCss() %>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -21,24 +24,9 @@
 	        </a>
 	      </div>
 	      <div class="collapse navbar-collapse" id="navbar1">
-	        <ul class="nav navbar-nav">
-	          <li><a href="/SistemaReservas/">Home<span class="sr-only">(current)</span></a></li>
-	          <li><a href="/SistemaReservas/Sedes/">Sedes</a></li>
-	        </ul>
-	        <ul class="nav navbar-nav navbar-right">
-	          <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								<span class="glyphicon glyphicon-user"></span> Cliente <span class="caret"></span>
-							</a>
-	            <ul class="dropdown-menu">
-	                <li><a href="#">A ction</a></li>
-	                <li><a href="#">Another action</a></li>
-	                <li><a href="#">Something else here</a></li>
-	                <li role="separator" class="divider"></li>
-	                <li><a href="#">Separated link</a></li>
-	            </ul>
-	          </li>
-	        </ul>
+	        <% Usuario usuario = (Usuario)request.getAttribute("usuario");
+	        	out.println(HelperVistas.getNavbar(usuario));
+	        %>
 	      </div>
 	    </div>
 	</nav>
@@ -60,7 +48,7 @@
 						<div class="row">
 						  <div class="col-xs-6">
 								<label for="">Fecha:</label>
-								<input name="fecha" type="date" class="form-control" placeholder="dia/mes/aÃ±o">
+								<input name="fecha" type="date" class="form-control" placeholder="dia/mes/año">
 						  </div>
 							<div class="col-xs-6">
 								<label for="">Hora de Inicio:</label>
@@ -93,7 +81,7 @@
 			<div class="col-xs-12 col-sm-6">
 				<div id="cancha1" class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">Cancha NÂº 1</h3>
+				    <h3 class="panel-title">Cancha Nº 1</h3>
 				  </div>
 				  <form method="post" action="" class="panel-body">
 						<table class="table table-striped">
@@ -141,7 +129,7 @@
 			<div class="col-xs-12 col-sm-6">
 				<div id="cancha2" class="panel panel-default">
 					<div class="panel-heading">
-						<h3 class="panel-title">Cancha NÂº 2</h3>
+						<h3 class="panel-title">Cancha Nº 2</h3>
 					</div>
 					<form method="post" action="" class="panel-body">
 						<table class="table table-striped">
@@ -194,20 +182,6 @@
 			<h3 align="center">Footer</h3>
 		</div>
 	</div>
-	<script src="/SistemaReservas/bootstrap/js/jquery.min.js"></script>
-  <script src="/SistemaReservas/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript">
-		function sumar(selector, cantidad) {
-			total = $("#"+selector+" > form.panel-body > label.reservatotal");
-			total.text(parseFloat(total.text() )+parseFloat(cantidad));
-		}
-		function restar(selector, cantidad) {
-			total = $("#"+selector+" > form.panel-body > label.reservatotal");
-			total.text(parseFloat(total.text() )-parseFloat(cantidad));
-		}
-		function evaluar(entrada, selector, cantidad) {
-			if (entrada.checked) sumar(selector,cantidad); else restar(selector,cantidad)
-		}
-	</script>
+	<%= HelperVistas.getScripts() %>
 </body>
 </html>

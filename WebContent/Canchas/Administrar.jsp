@@ -1,10 +1,12 @@
-<!DOCTYPE html>
+<%@page import="modelo.HelperVistas"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>La 12</title>
-    <link href="/SistemaReservas/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/SistemaReservas/bootstrap/css/style.css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>La 12</title>
+	<%= HelperVistas.getLinkToCss() %>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -41,7 +43,7 @@
     </div>
   </nav>
   <div class="container">
-    <h2>AdministraciÃ³n de Canchas - Sede NÂº 01</h2>
+    <h2>Administración de Canchas - Sede Nº 01</h2>
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#tab-nuevo">Nuevo</a></li>
       <li><a data-toggle="tab" href="#tab-lista">Lista</a></li>
@@ -53,8 +55,14 @@
           <div class="row">
             <div class="col-xs-12 col-sm-10 col-md-8 no-float center-block">
               <form class="form-horizontal">
+              	<% 
+			      String msg_error = (String)request.getAttribute("msg_error");
+			      if(msg_error != null){
+			    	  out.println(HelperVistas.alerta(msg_error));
+			      }
+			    %>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">NÂº Cancha:</label>
+                  <label class="col-sm-3 control-label">Nº Cancha:</label>
                   <div class="col-sm-6">
                     <input type="number" name="nro_cancha" class="form-control">
                   </div>
@@ -91,9 +99,9 @@
             <table class="table table-striped">
             	<thead>
             		<tr>
-            			<th>NÂº</th>
+            			<th>Nº</th>
                   <th>Estado Actual</th>
-                  <th>OperaciÃ³n</th>
+                  <th>Operación</th>
             		</tr>
             	</thead>
             	<tbody>
@@ -120,12 +128,6 @@
       </div>
     </div>
   </div>
-  <script src="/SistemaReservas/bootstrap/js/jquery.min.js"></script>
-  <script src="/SistemaReservas/bootstrap/js/bootstrap.min.js"></script>
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  </script>
+  <%= HelperVistas.getScripts() %>
 </body>
 </html>

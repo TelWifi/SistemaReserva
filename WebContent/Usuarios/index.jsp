@@ -7,8 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<title>La 12</title>
-    <link href="/SistemaReservas/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/SistemaReservas/bootstrap/css/style.css" rel="stylesheet">
+    <%= HelperVistas.getLinkToCss() %>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -119,12 +118,6 @@
       </div>
     </div>
   </div>
-  <script src="/SistemaReservas/bootstrap/js/jquery.min.js"></script>
-  <script src="/SistemaReservas/bootstrap/js/bootstrap.min.js"></script>
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  </script>
+  <%= HelperVistas.getScripts() %>
 </body>
 </html>

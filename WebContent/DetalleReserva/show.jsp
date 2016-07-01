@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.HelperVistas"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
-    <title>La 12</title>
-    <link href="/SistemaReservas/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/SistemaReservas/bootstrap/css/style.css" rel="stylesheet">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<title>Insert title here</title>
+	<%= HelperVistas.getLinkToCss() %>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -21,37 +24,22 @@
 	        </a>
 	      </div>
 	      <div class="collapse navbar-collapse" id="navbar1">
-	        <ul class="nav navbar-nav">
-	          <li><a href="/SistemaReservas/">Home <span class="sr-only">(current)</span></a></li>
-	          <li class="active"><a href="/SistemaReservas/Sedes/">Sedes</a></li>
-	        </ul>
-	        <ul class="nav navbar-nav navbar-right">
-	          <li class="dropdown">
-	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-								<span class="glyphicon glyphicon-user"></span> Operador<span class="caret"></span>
-							</a>
-	            <ul class="dropdown-menu">
-	                <li><a href="#">A ction</a></li>
-	                <li><a href="#">Another action</a></li>
-	                <li><a href="#">Something else here</a></li>
-	                <li role="separator" class="divider"></li>
-	                <li><a href="#">Separated link</a></li>
-	            </ul>
-	          </li>
-	        </ul>
+	        <% Usuario usuario = (Usuario)request.getAttribute("usuario");
+	        	out.println(HelperVistas.getNavbar(usuario));
+	    	%>
 	      </div>
 	    </div>
 	</nav>
 
   <div class="container">
     <div class="row">
-      <h2 align="center">Reserva NÂº: 1212</h2>
+      <h2 align="center">Reserva Nº: 1212</h2>
     </div>
     <div id="div_canchas" class="row">
       <div class="col-xs-12">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">Cancha NÂº 1</h3>
+            <h3 class="panel-title">Cancha Nº 1</h3>
           </div>
           <div class="panel-body">
             <table class="table table-striped">
@@ -76,7 +64,7 @@
               </tbody>
             </table>
             <label>Total: S/. 45.00</label><br>
-            <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reserva Ã©xitosa">
+            <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-placement="bottom" title="Reserva éxitosa">
               <span class="glyphicon glyphicon-usd"></span>
             </button>
             <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Cancelar Reserva">
@@ -93,12 +81,6 @@
       <h3 align="center">Footer</h3>
     </div>
   </div>
-	<script src="/SistemaReservas/bootstrap/js/jquery.min.js"></script>
-  <script src="/SistemaReservas/bootstrap/js/bootstrap.min.js"></script>
-  <script>
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip()
-    })
-  </script>
+	<%= HelperVistas.getScripts() %>
 </body>
 </html>

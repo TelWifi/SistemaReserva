@@ -7,8 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>La 12</title>
-    <link href="/SistemaReservas/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/SistemaReservas/bootstrap/css/style.css" rel="stylesheet">
+    <%= HelperVistas.getLinkToCss() %>
 </head>
 <body>
 	<nav class="navbar navbar-inverse">
@@ -20,7 +19,7 @@
 	          <span class="icon-bar"></span>
 	          <span class="icon-bar"></span>
 	        </button>
-	        <a class="navbar-brand" href="index.html">
+	        <a class="navbar-brand" href="/SistemaReservas/">
 	          <img alt="LogoLa12" src="">
 	        </a>
 	      </div>
@@ -37,7 +36,7 @@
       if(msg_success != null){
     	  out.println(HelperVistas.exito(msg_success));
       }
-      %>
+    %>
 	
 	<div class="container">
 		<div class="row">
@@ -69,7 +68,6 @@
 			<h3 align="center">Footer</h3>
 		</div>
 	</div>
-	<script src="/SistemaReservas/bootstrap/js/jquery.min.js"></script>
-  <script src="/SistemaReservas/bootstrap/js/bootstrap.min.js"></script>
+	<%= HelperVistas.getScripts() %>
 </body>
 </html>
