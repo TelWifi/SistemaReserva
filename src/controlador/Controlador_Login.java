@@ -1,6 +1,5 @@
 package controlador;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import modelo.Usuario;
-import modelo.consultas;
 
 
 @WebServlet("/Usuarios/Controlador_Login")
@@ -56,14 +54,17 @@ public class Controlador_Login extends HttpServlet {
 			if(user.getTipo().equals("0003")){
 				sesion=request.getSession();
 				sesion.setAttribute("nombre", user.getNombres());
-				response.sendRedirect("/SistemaReservas/Sedes/");
+				
 			}else if(user.getTipo().equals("0002")){
 				
 			}
+			request.setAttribute("msg_success", "Bienvenido");
+			request.setAttribute("usuario", user);
+			request.getRequestDispatcher("/").forward(request, response);
 		}else {
-			response.sendRedirect("/SistemaReservas/Usuarios/");
+			request.setAttribute("msg_error", "Datos incorrectos");
+			request.getRequestDispatcher("/Usuarios/").forward(request, response);
 		}
-		//response.sendRedirect("index.html");
 	}
 
 }

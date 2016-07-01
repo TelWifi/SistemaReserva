@@ -1,7 +1,11 @@
-<!DOCTYPE html>
+<%@page import="modelo.Usuario"%>
+<%@page import="modelo.HelperVistas"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>La 12</title>
     <link href="/SistemaReservas/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/SistemaReservas/bootstrap/css/style.css" rel="stylesheet">
@@ -21,24 +25,28 @@
 	        </a>
 	      </div>
 	      <div class="collapse navbar-collapse" id="navbar1">
-	        <ul class="nav navbar-nav">
-	          <li class="active"><a href="index.html">Home <span class="sr-only">(current)</span></a></li>
-	          <li><a href="Sedes/">Sedes</a></li>
-	        </ul>
-	        <ul class="nav navbar-nav navbar-right">
-	        	<li><a href="Usuarios/">Iniciar Sesi√≥n</a></li>
-	        </ul>
+	      	<%
+	      		Usuario usuario = (Usuario)request.getAttribute("usuario");
+	      		out.println(HelperVistas.getNavbar(usuario));
+	      	%>
 	      </div>
 	    </div>
 	</nav>
+	<% 
+      String msg_success = (String)request.getAttribute("msg_success");
+      if(msg_success != null){
+    	  out.println(HelperVistas.exito(msg_success));
+      }
+      %>
+	
 	<div class="container">
 		<div class="row">
 			<h3 align="center">Canchas Deportivas</h3>
-			<h1 align="center">La 12, <small>m√°s que f√∫tbol</small></h1>
+			<h1 align="center">La 12, <small>m·s que f˙tbol</small></h1>
 		</div>
 		<div class="row">
 			<div class="col-xs-12 col-sm-6  col-md-4 no-float center-block">
-				<a href="Reservas/reservar.html" type="button" class="btn btn-success btn-lg btn-block">
+				<a href="/SistemaReservas/Reservas/reservar.html" type="button" class="btn btn-success btn-lg btn-block">
 					<span class="glyphicon glyphicon-hand-right"></span>
 					Reservar
 					<span class="glyphicon glyphicon-hand-left"></span>
