@@ -39,3 +39,39 @@ BEGIN
 	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error estado';
 	end if;
 END;
+
+DROP TRIGGER IF EXISTS check_ins_usuario;
+DELIMITER $$
+CREATE TRIGGER check_ins_usuario BEFORE INSERT ON usuario FOR EACH ROW 
+BEGIN
+	if new.celular not rlike '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error celular';
+	end if;
+    	if new.DNI not rlike '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error DNI';
+	end if;
+	if new.tipo not rlike '[0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error tipo';
+	end if;
+    if new.estado not rlike '[0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error estado';
+	end if;
+END;
+
+DROP TRIGGER IF EXISTS check_upd_usuario;
+DELIMITER $$
+CREATE TRIGGER check_upd_usuario BEFORE UPDATE ON usuario FOR EACH ROW 
+BEGIN
+	if new.celular not rlike '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error celular';
+	end if;
+    	if new.DNI not rlike '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error DNI';
+	end if;
+	if new.tipo not rlike '[0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error tipo';
+	end if;
+    if new.estado not rlike '[0-9][0-9][0-9][0-9]' THEN
+	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error estado';
+	end if;
+END;
