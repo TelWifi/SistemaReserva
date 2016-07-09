@@ -44,9 +44,9 @@ DROP TRIGGER IF EXISTS check_ins_usuario;
 DELIMITER $$
 CREATE TRIGGER check_ins_usuario BEFORE INSERT ON usuario FOR EACH ROW 
 BEGIN
-	if new.nombres not like '^([A-Z])' THEN
-       		SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error nombre - solo letras';
-       	end if;
+	if CHAR_length(new.password) < 8 THEN
+    		SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error password - mayor de 7 caracteres';
+    	end if;
 	if new.celular not rlike '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' THEN
 	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error celular - solo digitos';
 	end if;
@@ -65,9 +65,9 @@ DROP TRIGGER IF EXISTS check_upd_usuario;
 DELIMITER $$
 CREATE TRIGGER check_upd_usuario BEFORE UPDATE ON usuario FOR EACH ROW 
 BEGIN
-	if new.nombres not like '^([A-Z])' THEN
-       		SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error nombre - solo letras';
-       	end if;
+	if CHAR_length(new.password) < 8 THEN
+    		SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error password - mayor de 7 caracteres';
+    	end if;
 	if new.celular not rlike '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]' THEN
 	   	SIGNAL SQLSTATE '45000' set MESSAGE_TEXT = 'Error celular - solo digitos';
 	end if;
